@@ -1,0 +1,91 @@
+{
+  "colorScheme": "dark",
+  "fonts": [
+    {
+      "family": "Arial",
+      "count": 130
+    },
+    {
+      "family": "sans-serif",
+      "count": 130
+    },
+    {
+      "family": "Mona Sans Variable",
+      "count": 128
+    },
+    {
+      "family": "Brier",
+      "count": 2
+    }
+  ],
+  "colors": {
+    "primary": "#D2FF00",
+    "accent": "#DDE1D2",
+    "background": "#282C20",
+    "textPrimary": "#282C20",
+    "link": "#DDE1D2"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Mona Sans Variable",
+      "heading": "Mona Sans Variable"
+    },
+    "fontStacks": {
+      "body": [
+        "Mona Sans Variable",
+        "Arial",
+        "sans-serif"
+      ],
+      "heading": [
+        "Mona Sans Variable",
+        "Arial",
+        "sans-serif"
+      ],
+      "paragraph": [
+        "Mona Sans Variable",
+        "Arial",
+        "sans-serif"
+      ]
+    },
+    "fontSizes": {
+      "h1": "38px",
+      "h2": "32px",
+      "body": "22.2222px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "0px"
+  },
+  "components": {},
+  "images": {
+    "logo": "File saved at: attached_assets/logo.svg",
+    "favicon": "File saved at: attached_assets/favicon.png",
+    "ogImage": "File saved at: attached_assets/ogImage.webp"
+  },
+  "__framework_hints": [],
+  "__llm_logo_reasoning": {
+    "selectedIndex": 7,
+    "reasoning": "Logo rejected: Low confidence. Heuristic fallback: Weak indicators: no link (brand logos usually link to homepage, penalty), visible, src contains logo, reasonable size, SVG format, body location without header (penalty). Score: 3. LLM validation recommended (close scores: top=3, second=3)",
+    "confidence": 0.30000000000000004,
+    "rejected": true
+  },
+  "__llm_button_reasoning": {
+    "primary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "secondary": {
+      "index": -1,
+      "text": "N/A",
+      "reasoning": "LLM failed"
+    },
+    "confidence": 0
+  },
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
