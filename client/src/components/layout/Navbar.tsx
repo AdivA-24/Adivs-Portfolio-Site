@@ -26,12 +26,12 @@ export default function Navbar() {
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "glass py-4" : "bg-transparent py-6"
+          scrolled ? "glass py-4 shadow-sm" : "bg-transparent py-6"
         }`}
       >
         <div className="container mx-auto px-6 flex items-center justify-between">
           <Link href="/">
-            <span className="text-2xl font-display font-bold tracking-tighter hover:text-primary transition-colors cursor-pointer">
+            <span className="text-2xl font-display font-bold tracking-tighter hover:text-primary transition-colors cursor-pointer text-foreground">
               ADIV<span className="text-primary">.</span>
             </span>
           </Link>
@@ -42,7 +42,7 @@ export default function Navbar() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-sm font-mono uppercase tracking-widest hover:text-primary transition-colors"
+                className="text-sm font-mono uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors"
               >
                 {item}
               </a>
@@ -51,7 +51,7 @@ export default function Navbar() {
               href={RESUME_DATA.social.find(s => s.name === "LinkedIn")?.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="px-4 py-2 border border-primary text-primary font-mono text-sm hover:bg-primary hover:text-background transition-all duration-300"
+              className="px-4 py-2 border border-primary text-primary font-mono text-sm hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
             >
               RESUME
             </a>
@@ -71,13 +71,13 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="absolute top-full left-0 right-0 bg-background border-b border-border p-6 md:hidden flex flex-col space-y-4 shadow-2xl"
+            className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border p-6 md:hidden flex flex-col space-y-4 shadow-2xl"
           >
             {["Experience", "Projects", "Skills", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-lg font-display font-medium hover:text-primary"
+                className="text-lg font-display font-medium text-foreground hover:text-primary"
                 onClick={() => setIsOpen(false)}
               >
                 {item}

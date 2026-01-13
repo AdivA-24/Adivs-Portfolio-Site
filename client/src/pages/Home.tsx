@@ -9,37 +9,37 @@ import { RESUME_DATA } from "@/lib/data";
 
 export default function Home() {
   return (
-    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-background font-sans">
+    <div className="bg-background min-h-screen text-foreground selection:bg-primary selection:text-white font-sans overflow-hidden">
       <Navbar />
       
       <main>
         <Hero />
         
-        <div className="py-8 border-y border-border bg-secondary/5 backdrop-blur-sm overflow-hidden">
-          <Marquee duration={30} className="text-4xl md:text-6xl font-display font-bold text-transparent text-stroke-1 opacity-50">
+        <div className="py-12 border-y border-border/50 bg-secondary/30 backdrop-blur-sm overflow-hidden">
+          <Marquee duration={40} className="text-5xl md:text-7xl font-display font-bold text-transparent text-stroke-1 opacity-20 hover:opacity-40 transition-opacity">
             <span className="mx-8 text-foreground">FULL STACK ENGINEER</span>
-            <span className="mx-8 text-primary">•</span>
+            <span className="mx-8 text-primary font-serif italic">&</span>
             <span className="mx-8 text-foreground">DATA ARCHITECT</span>
-            <span className="mx-8 text-primary">•</span>
+            <span className="mx-8 text-primary font-serif italic">&</span>
             <span className="mx-8 text-foreground">CLOUD NATIVE</span>
-            <span className="mx-8 text-primary">•</span>
+            <span className="mx-8 text-primary font-serif italic">&</span>
           </Marquee>
         </div>
 
         <Timeline />
         
-        <div className="py-8 border-y border-border bg-primary text-background overflow-hidden">
-          <Marquee duration={25} reverse className="text-4xl md:text-6xl font-display font-bold">
-            <span className="mx-8">TYPESCRIPT</span>
-            <span className="mx-8">•</span>
-            <span className="mx-8">PYTHON</span>
-            <span className="mx-8">•</span>
-            <span className="mx-8">REACT</span>
-            <span className="mx-8">•</span>
-            <span className="mx-8">AWS</span>
-            <span className="mx-8">•</span>
-            <span className="mx-8">KUBERNETES</span>
-            <span className="mx-8">•</span>
+        <div className="py-12 border-y border-border/50 bg-primary/5 text-foreground overflow-hidden">
+          <Marquee duration={30} reverse className="text-4xl md:text-6xl font-display font-bold">
+            <span className="mx-12">TYPESCRIPT</span>
+            <span className="mx-12 text-primary opacity-50">✦</span>
+            <span className="mx-12">PYTHON</span>
+            <span className="mx-12 text-primary opacity-50">✦</span>
+            <span className="mx-12">REACT</span>
+            <span className="mx-12 text-primary opacity-50">✦</span>
+            <span className="mx-12">AWS</span>
+            <span className="mx-12 text-primary opacity-50">✦</span>
+            <span className="mx-12">KUBERNETES</span>
+            <span className="mx-12 text-primary opacity-50">✦</span>
           </Marquee>
         </div>
 
@@ -47,9 +47,9 @@ export default function Home() {
         <Projects />
       </main>
 
-      <footer id="contact" className="py-32 border-t border-border bg-secondary/5 relative overflow-hidden">
+      <footer id="contact" className="py-32 border-t border-border bg-secondary/20 relative overflow-hidden">
         {/* Background Grid */}
-        <div className="absolute inset-0 bg-grid-pattern opacity-5 pointer-events-none" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
         
         <div className="container mx-auto px-6 text-center relative z-10">
           <motion.h2 
@@ -59,7 +59,7 @@ export default function Home() {
             className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight"
           >
             Ready to build <br className="md:hidden" />
-            <span className="text-stroke-1 text-transparent md:text-foreground">something</span> <span className="text-primary">extraordinary?</span>
+            <span className="font-serif italic text-primary">something</span> <span className="text-foreground">extraordinary?</span>
           </motion.h2>
 
           <motion.p
@@ -79,9 +79,9 @@ export default function Home() {
                 href={social.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative p-6 rounded-full border border-border bg-background hover:border-primary transition-all duration-300 overflow-hidden"
+                className="group relative p-6 rounded-full border border-border bg-background hover:border-primary transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md"
               >
-                <div className="absolute inset-0 bg-primary/10 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
+                <div className="absolute inset-0 bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
                 <social.icon className="w-6 h-6 text-foreground group-hover:text-primary transition-colors relative z-10" />
               </a>
             ))}
