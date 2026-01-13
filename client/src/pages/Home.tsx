@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Timeline from "@/components/sections/Timeline";
 import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
+import About from "@/components/sections/About";
 import Marquee from "@/components/ui/marquee";
 import { motion } from "framer-motion";
 import { RESUME_DATA } from "@/lib/data";
@@ -45,6 +46,7 @@ export default function Home() {
 
         <Skills />
         <Projects />
+        <About />
       </main>
 
       <footer id="contact" className="py-32 border-t border-border bg-secondary/20 relative overflow-hidden">
