@@ -13,7 +13,7 @@ export default function About() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-display font-bold mb-20 flex items-center gap-4 text-foreground"
         >
-          <span className="text-primary text-2xl font-mono">04</span> ABOUT
+          <span className="text-primary text-2xl font-mono">01</span> ABOUT
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-24 items-center">

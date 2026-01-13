@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { RESUME_DATA } from "@/lib/data";
+import TiltCard from "@/components/ui/tilt-card";
 
 export default function Projects() {
   return (
@@ -12,23 +13,23 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-display font-bold mb-20 flex items-center gap-4 text-foreground"
         >
-          <span className="text-primary text-2xl font-mono">03</span> PROJECTS
+          <span className="text-primary text-2xl font-mono">04</span> PROJECTS
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {RESUME_DATA.projects.map((project, index) => (
+            <TiltCard key={index} className="h-full">
             <motion.div
-              key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
               viewport={{ once: true }}
-              className="group relative bg-secondary/40 border border-transparent hover:border-primary/20 p-8 md:p-12 transition-all duration-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5"
+              className="group h-full relative bg-secondary/40 border border-transparent hover:border-primary/20 p-8 md:p-12 transition-all duration-500 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-primary/5"
             >
               {/* Blob Background Effect */}
               <div className="absolute -right-20 -top-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl group-hover:bg-primary/20 transition-all duration-700" />
               
-              <div className="relative z-10">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-8">
                   <span className="text-primary font-mono text-xs uppercase tracking-widest border border-primary/20 px-3 py-1 rounded-full bg-background/50">
                     {project.award || "Project"}
@@ -53,6 +54,7 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
+            </TiltCard>
           ))}
         </div>
       </div>

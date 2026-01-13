@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import RiveAnimation from "@/components/ui/rive-animation";
+import TiltCard from "./tilt-card";
 
 export default function InteractiveCard({ 
   children, 
@@ -10,14 +10,13 @@ export default function InteractiveCard({
   className?: string 
 }) {
   return (
+    <TiltCard className="h-full">
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      whileHover={{ y: -5 }}
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
       className={cn(
-        "group relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm border border-border p-8 transition-colors hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5",
+        "group h-full relative overflow-hidden rounded-2xl bg-white/50 backdrop-blur-sm border border-border p-8 transition-colors hover:border-primary/30 hover:shadow-2xl hover:shadow-primary/5",
         className
       )}
     >
@@ -30,9 +29,10 @@ export default function InteractiveCard({
          {/* <RiveAnimation src="https://cdn.rive.app/animations/shapes.riv" /> */}
       </div>
 
-      <div className="relative z-10">
+      <div className="relative z-10 h-full">
         {children}
       </div>
     </motion.div>
+    </TiltCard>
   );
 }

@@ -19,7 +19,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-4xl md:text-6xl font-display font-bold mb-20 flex items-center gap-4 text-foreground"
         >
-          <span className="text-primary text-2xl font-mono">02</span> SKILLS
+          <span className="text-primary text-2xl font-mono">03</span> SKILLS
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">

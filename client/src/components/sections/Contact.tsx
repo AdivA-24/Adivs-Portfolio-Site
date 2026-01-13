@@ -11,16 +11,6 @@ export default function Contact() {
       
       <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
         
-        {/* Rive Mascot for Personality */}
-        <div className="w-64 h-64 md:w-80 md:h-80 mb-8 -mt-20">
-          <RiveAnimation 
-            src="https://ucarecdn.com/d2e95826-37c2-4c9d-af6c-e96e00a232f6/rumplelooks.riv" 
-            stateMachines={["State Machine 1"]} 
-            autoplay={true}
-            fit={Fit.Contain}
-          />
-        </div>
-
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
