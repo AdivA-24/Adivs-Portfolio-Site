@@ -1,15 +1,15 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroBg from "@assets/generated_images/soft_beige_and_blue_abstract_organic_shapes.png";
-import RiveAnimation from "@/components/ui/rive-animation";
 
 export default function Hero() {
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 200]);
   const opacity = useTransform(scrollY, [0, 300], [1, 0]);
 
-  // Mouse interaction for parallax blobs
-  const springConfig = { stiffness: 100, damping: 30 };
+  // Enhanced Mouse interaction for parallax blobs
+  // Increased stiffness and damping for a more "responsive" feel
+  const springConfig = { stiffness: 150, damping: 20 };
   const mouseX = useSpring(0, springConfig);
   const mouseY = useSpring(0, springConfig);
 
@@ -25,34 +25,39 @@ export default function Hero() {
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background"
       onMouseMove={handleMouseMove}
     >
-      {/* Rive Background Layer - Using a clean abstract animation if available, or a fallback */}
+      {/* Background Image with Parallax */}
       <motion.div 
         style={{ y, opacity }}
         className="absolute inset-0 z-0 opacity-40 mix-blend-multiply"
       >
-        {/* Using a public Rive animation that fits the clean aesthetic */}
-        {/* This is a placeholder for a 'clean' animation. Users would typically replace this URL with their own hosted .riv file */}
-        <div className="absolute inset-0 scale-150 blur-sm opacity-50">
-           {/* Fallback to image if Rive fails to load or for design preference */}
-            <div 
-            className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${heroBg})` }}
-            />
-        </div>
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroBg})` }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
       </motion.div>
 
-      {/* Animated Blobs (Framer Motion) - Kept for the 'soft' feel */}
+      {/* Animated Blobs (Framer Motion) - Enhanced Range */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
-          style={{ x: useTransform(mouseX, [-0.5, 0.5], [20, -20]), y: useTransform(mouseY, [-0.5, 0.5], [20, -20]) }}
+          style={{ 
+            x: useTransform(mouseX, [-0.5, 0.5], [60, -60]), 
+            y: useTransform(mouseY, [-0.5, 0.5], [60, -60]) 
+          }}
           className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl animate-blob"
         />
         <motion.div 
-          style={{ x: useTransform(mouseX, [-0.5, 0.5], [-20, 20]), y: useTransform(mouseY, [-0.5, 0.5], [-20, 20]) }}
+          style={{ 
+            x: useTransform(mouseX, [-0.5, 0.5], [-60, 60]), 
+            y: useTransform(mouseY, [-0.5, 0.5], [-60, 60]) 
+          }}
           className="absolute top-1/3 right-1/4 w-96 h-96 bg-secondary/60 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-2000"
         />
         <motion.div 
-           style={{ x: useTransform(mouseX, [-0.5, 0.5], [10, -10]), y: useTransform(mouseY, [-0.5, 0.5], [-10, 10]) }}
+           style={{ 
+             x: useTransform(mouseX, [-0.5, 0.5], [40, -40]), 
+             y: useTransform(mouseY, [-0.5, 0.5], [-40, 40]) 
+           }}
           className="absolute -bottom-32 left-1/3 w-96 h-96 bg-primary/10 rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"
         />
       </div>
@@ -96,17 +101,6 @@ export default function Hero() {
             <br className="hidden md:block" />
             Crafting scalable data solutions and fluid digital experiences.
           </motion.p>
-          
-           {/* Rive Badge / Indicator */}
-           <motion.div 
-             initial={{ opacity: 0 }}
-             animate={{ opacity: 1 }}
-             transition={{ delay: 1.2 }}
-             className="mt-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-primary/20 text-[10px] font-mono text-primary/70"
-           >
-             <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-             POWERED BY RIVE & REACT
-           </motion.div>
         </div>
       </div>
 
