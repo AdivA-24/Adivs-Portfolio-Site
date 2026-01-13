@@ -97,7 +97,7 @@ export default function Hero() {
             transition={{ duration: 1, delay: 0.8 }}
             className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto font-light leading-relaxed"
           >
-            <span className="text-foreground font-medium">Software Engineer & Data Architect.</span> 
+            <span className="text-foreground font-medium">Software Engineer II.</span>  
             <br className="hidden md:block" />
             Crafting scalable data solutions and fluid digital experiences.
           </motion.p>
