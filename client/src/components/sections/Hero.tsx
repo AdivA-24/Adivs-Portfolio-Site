@@ -14,6 +14,7 @@ export default function Hero() {
   const mouseY = useSpring(0, springConfig);
 
   const handleMouseMove = (e: React.MouseEvent) => {
+    // Subtle parallax only - removed direct cursor tracking for a cleaner feel
     const { clientX, clientY } = e;
     const { innerWidth, innerHeight } = window;
     mouseX.set(clientX / innerWidth - 0.5);

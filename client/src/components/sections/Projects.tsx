@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { RESUME_DATA } from "@/lib/data";
-import TiltCard from "@/components/ui/tilt-card";
 
 export default function Projects() {
   return (
@@ -18,8 +17,8 @@ export default function Projects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {RESUME_DATA.projects.map((project, index) => (
-            <TiltCard key={index} className="h-full">
             <motion.div
+              key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: index * 0.1, ease: "easeOut" }}
@@ -54,7 +53,6 @@ export default function Projects() {
                 </div>
               </div>
             </motion.div>
-            </TiltCard>
           ))}
         </div>
       </div>

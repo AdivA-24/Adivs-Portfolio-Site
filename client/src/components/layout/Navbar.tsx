@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { RESUME_DATA } from "@/lib/data";
+import Magnetic from "@/components/ui/magnetic";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,22 +40,25 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
             {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase()}`}
-                className="text-sm font-mono uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors"
-              >
-                {item}
-              </a>
+              <Magnetic key={item}>
+                <a
+                  href={`#${item.toLowerCase()}`}
+                  className="text-sm font-mono uppercase tracking-widest text-foreground/80 hover:text-primary transition-colors block px-2 py-1"
+                >
+                  {item}
+                </a>
+              </Magnetic>
             ))}
-            <a
-              href={RESUME_DATA.social.find(s => s.name === "LinkedIn")?.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-4 py-2 border border-primary text-primary font-mono text-sm hover:bg-primary hover:text-white transition-all duration-300 rounded-full"
-            >
-              RESUME
-            </a>
+            <Magnetic>
+              <a
+                href={RESUME_DATA.social.find(s => s.name === "LinkedIn")?.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-4 py-2 border border-primary text-primary font-mono text-sm hover:bg-primary hover:text-white transition-all duration-300 rounded-full block"
+              >
+                RESUME
+              </a>
+            </Magnetic>
           </div>
 
           {/* Mobile Toggle */}
