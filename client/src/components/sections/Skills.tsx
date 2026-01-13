@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { RESUME_DATA } from "@/lib/data";
+import InteractiveCard from "@/components/ui/interactive-card";
 
 const skillCategories = [
   { name: "Languages", items: RESUME_DATA.skills.languages },
@@ -23,25 +24,18 @@ export default function Skills() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {skillCategories.map((category, idx) => (
-            <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-background/80 backdrop-blur-sm border border-border/50 p-8 hover:border-primary/30 transition-all duration-300 rounded-xl hover:shadow-lg hover:shadow-primary/5"
-            >
+            <InteractiveCard key={idx}>
               <h3 className="text-xl font-display font-bold text-foreground mb-6 border-b border-border/50 pb-4">
                 {category.name}
               </h3>
               <ul className="space-y-3">
                 {category.items.map((skill, i) => (
-                  <li key={i} className="font-mono text-sm text-muted-foreground flex items-center gap-2">
-                    <span className="text-primary/70 text-xs">●</span> {skill}
+                  <li key={i} className="font-mono text-sm text-muted-foreground flex items-center gap-2 group-hover:text-foreground transition-colors">
+                    <span className="text-primary/70 text-xs group-hover:scale-125 transition-transform duration-300">●</span> {skill}
                   </li>
                 ))}
               </ul>
-            </motion.div>
+            </InteractiveCard>
           ))}
         </div>
       </div>

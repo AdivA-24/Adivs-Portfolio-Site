@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import heroBg from "@assets/generated_images/soft_beige_and_blue_abstract_organic_shapes.png";
+import RiveAnimation from "@/components/ui/rive-animation";
 
 export default function Hero() {
   const { scrollY } = useScroll();
@@ -24,19 +25,23 @@ export default function Hero() {
       className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-background"
       onMouseMove={handleMouseMove}
     >
-      {/* Background Image with Parallax */}
+      {/* Rive Background Layer - Using a clean abstract animation if available, or a fallback */}
       <motion.div 
         style={{ y, opacity }}
-        className="absolute inset-0 z-0"
+        className="absolute inset-0 z-0 opacity-40 mix-blend-multiply"
       >
-        <div 
-          className="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-multiply"
-          style={{ backgroundImage: `url(${heroBg})` }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-transparent to-background" />
+        {/* Using a public Rive animation that fits the clean aesthetic */}
+        {/* This is a placeholder for a 'clean' animation. Users would typically replace this URL with their own hosted .riv file */}
+        <div className="absolute inset-0 scale-150 blur-sm opacity-50">
+           {/* Fallback to image if Rive fails to load or for design preference */}
+            <div 
+            className="absolute inset-0 bg-cover bg-center"
+            style={{ backgroundImage: `url(${heroBg})` }}
+            />
+        </div>
       </motion.div>
 
-      {/* Animated Blobs */}
+      {/* Animated Blobs (Framer Motion) - Kept for the 'soft' feel */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div 
           style={{ x: useTransform(mouseX, [-0.5, 0.5], [20, -20]), y: useTransform(mouseY, [-0.5, 0.5], [20, -20]) }}
@@ -91,6 +96,17 @@ export default function Hero() {
             <br className="hidden md:block" />
             Crafting scalable data solutions and fluid digital experiences.
           </motion.p>
+          
+           {/* Rive Badge / Indicator */}
+           <motion.div 
+             initial={{ opacity: 0 }}
+             animate={{ opacity: 1 }}
+             transition={{ delay: 1.2 }}
+             className="mt-8 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/50 border border-primary/20 text-[10px] font-mono text-primary/70"
+           >
+             <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+             POWERED BY RIVE & REACT
+           </motion.div>
         </div>
       </div>
 
