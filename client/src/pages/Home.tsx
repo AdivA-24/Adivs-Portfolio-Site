@@ -28,6 +28,8 @@ export default function Home() {
           </Marquee>
         </div>
 
+        <About />
+
         <Timeline />
         
         <div className="py-12 border-y border-border/50 bg-primary/5 text-foreground overflow-hidden">
@@ -47,7 +49,6 @@ export default function Home() {
 
         <Skills />
         <Projects />
-        <About />
       </main>
 
       <Contact />

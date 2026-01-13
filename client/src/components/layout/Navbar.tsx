@@ -38,7 +38,7 @@ export default function Navbar() {
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center space-x-8">
-            {["Experience", "Projects", "Skills", "About", "Contact"].map((item) => (
+            {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -73,7 +73,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             className="absolute top-full left-0 right-0 bg-background/95 backdrop-blur-lg border-b border-border p-6 md:hidden flex flex-col space-y-4 shadow-2xl"
           >
-            {["Experience", "Projects", "Skills", "About", "Contact"].map((item) => (
+            {["About", "Experience", "Projects", "Skills", "Contact"].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
