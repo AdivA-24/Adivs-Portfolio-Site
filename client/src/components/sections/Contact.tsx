@@ -1,54 +1,90 @@
-import { motion } from "framer-motion";
-import { Fit } from "@rive-app/react-canvas";
 import { RESUME_DATA } from "@/lib/data";
-import RiveAnimation from "@/components/ui/rive-animation";
+import { useSectionReveal } from "@/hooks/use-section-reveal";
 
 export default function Contact() {
-  return (
-    <footer id="contact" className="py-32 border-t border-border bg-secondary/20 relative overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
-      
-      <div className="container mx-auto px-6 relative z-10 flex flex-col items-center">
-        
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-5xl md:text-7xl font-display font-bold mb-8 tracking-tight text-center"
-        >
-          Ready to build <br className="md:hidden" />
-          <span className="font-serif italic text-primary">something</span> <span className="text-foreground">extraordinary?</span>
-        </motion.h2>
+  const ref = useSectionReveal<HTMLElement>();
 
-        <motion.p
-           initial={{ opacity: 0 }}
-           whileInView={{ opacity: 1 }}
-           viewport={{ once: true }}
-           transition={{ delay: 0.2 }}
-           className="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto text-center"
+  return (
+    <footer
+      id="contact"
+      ref={ref}
+      className="py-32 border-t border-foreground/10 bg-foreground text-background relative overflow-hidden"
+    >
+      <div className="absolute inset-0 bg-grid-pattern opacity-20 pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10">
+        <p
+          data-reveal="eyebrow"
+          className="section-eyebrow mb-6"
+          style={{ color: "hsl(var(--background) / 0.6)" }}
         >
-          Currently building scalable solutions at PMG. Open to discussing interesting engineering challenges.
-        </motion.p>
-        
-        <div className="flex justify-center space-x-6 mb-20">
-          {RESUME_DATA.social.map((social) => (
+          04 / Contact
+        </p>
+
+        <h2
+          data-reveal="heading"
+          className="text-6xl md:text-8xl lg:text-9xl font-display font-bold tracking-tighter leading-[0.92] max-w-5xl"
+        >
+          Let's build<br />
+          something<span className="text-primary">.</span>
+        </h2>
+
+        <div
+          data-reveal="underline"
+          className="h-px w-32 bg-primary mt-10 mb-16 origin-left"
+        />
+
+        <div
+          data-reveal="item"
+          className="grid grid-cols-1 md:grid-cols-12 gap-10 items-end"
+        >
+          <div className="md:col-span-7">
+            <p className="text-xl md:text-2xl font-light leading-relaxed text-background/80 max-w-2xl">
+              Currently shipping data infrastructure at PMG. Open to talking
+              about new opportunities, AI-for-data, or anything you've
+              been stuck on for too long.
+            </p>
             <a
-              key={social.name}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative p-6 rounded-full border border-border bg-background hover:border-primary transition-all duration-300 overflow-hidden shadow-sm hover:shadow-md"
+              href={`mailto:${RESUME_DATA.email}`}
+              data-cursor="hover"
+              className="inline-block mt-10 text-2xl md:text-4xl font-display font-bold text-primary hover:underline underline-offset-8 decoration-2 transition-all"
             >
-              <div className="absolute inset-0 bg-primary/10 scale-0 group-hover:scale-100 transition-transform duration-300 rounded-full" />
-              <social.icon className="w-6 h-6 text-foreground group-hover:text-primary transition-colors relative z-10" />
+              {RESUME_DATA.email} ↗
             </a>
-          ))}
+          </div>
+
+          <div className="md:col-span-5">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-background/50 mb-4">
+              Find me elsewhere
+            </p>
+            <ul className="space-y-3">
+              {RESUME_DATA.social
+                .filter((s) => s.name !== "Email")
+                .map((social) => (
+                  <li key={social.name}>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-cursor="hover"
+                      className="group flex items-center justify-between border-b border-background/15 py-3 hover:border-primary transition-colors"
+                    >
+                      <span className="font-display text-xl group-hover:text-primary transition-colors">
+                        {social.name}
+                      </span>
+                      <span className="font-mono text-xs uppercase tracking-[0.2em] text-background/50 group-hover:text-primary transition-colors">
+                        ↗
+                      </span>
+                    </a>
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
-        
-        <div className="w-full flex flex-col md:flex-row justify-between items-center border-t border-border/50 pt-8 font-mono text-xs text-muted-foreground uppercase tracking-widest">
+
+        <div className="w-full flex flex-col md:flex-row justify-between items-center border-t border-background/15 mt-24 pt-8 font-mono text-[10px] uppercase tracking-[0.25em] text-background/50">
           <p>© {new Date().getFullYear()} Adiv Ahsan</p>
-          <p>Designed & Engineered with React + Tailwind + Rive</p>
+          <p>Built with React · Three.js · GSAP · Lenis</p>
         </div>
       </div>
     </footer>

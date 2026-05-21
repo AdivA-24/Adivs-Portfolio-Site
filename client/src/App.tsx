@@ -3,6 +3,8 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import Home from "@/pages/Home";
 import NotFound from "@/pages/not-found";
+import Intro from "@/components/layout/Intro";
+import { SmoothScrollProvider } from "@/lib/smooth-scroll";
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
@@ -20,8 +22,11 @@ function Router() {
 function App() {
   return (
     <TooltipProvider>
-      <Toaster />
-      <Router />
+      <Intro />
+      <SmoothScrollProvider>
+        <Toaster />
+        <Router />
+      </SmoothScrollProvider>
     </TooltipProvider>
   );
 }

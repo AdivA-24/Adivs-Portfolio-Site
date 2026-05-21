@@ -3,8 +3,6 @@
 
 @plugin "tailwindcss-animate";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --font-sans: "Inter", sans-serif;
   --font-display: "Space Grotesk", sans-serif;
@@ -38,38 +36,42 @@
 }
 
 :root {
-  /* Soft Earthy/Blue Palette */
-  
-  /* Background: Warm Cream/Beige */
-  --background: 35 30% 96%; /* #F9F7F2 */
-  
-  /* Foreground: Deep Slate/Navy */
-  --foreground: 220 30% 20%; /* #242E42 */
+  /* Sky horizon palette — light blue × sharp orange */
 
-  /* Primary: Muted Steel Blue */
-  --primary: 215 35% 45%; /* #4B6E91 */
+  /* Background: morning sky */
+  --background: 213 38% 91%;     /* #DCE7F2 */
+  /* Foreground: midnight ink */
+  --foreground: 225 53% 12%;     /* #0F1830 */
+
+  /* Primary accent: sharp orange */
+  --primary: 17 100% 56%;        /* #FF5A1F */
   --primary-foreground: 0 0% 100%;
 
-  /* Secondary: Soft Sand */
-  --secondary: 35 20% 90%; /* #EBE8E1 */
-  --secondary-foreground: 220 30% 20%;
+  /* Secondary: deeper sky tint */
+  --secondary: 213 32% 86%;
+  --secondary-foreground: 225 53% 12%;
 
-  /* Muted: Warm Grey */
-  --muted: 35 10% 85%;
-  --muted-foreground: 220 15% 50%;
+  /* Muted */
+  --muted: 213 28% 84%;
+  --muted-foreground: 220 16% 44%; /* #5E6A82 */
 
-  /* Accent: Sage/Soft Green or lighter Blue */
-  --accent: 215 35% 45%;
+  /* Accent mirrors primary for now */
+  --accent: 17 100% 56%;
   --accent-foreground: 0 0% 100%;
 
-  --destructive: 0 62.8% 30.6%;
+  --destructive: 0 62.8% 45%;
   --destructive-foreground: 0 0% 98%;
 
-  --border: 35 10% 85%;
-  --input: 35 10% 85%;
-  --ring: 215 35% 45%;
+  --border: 213 22% 78%;
+  --input: 213 22% 78%;
+  --ring: 17 100% 56%;
 
   --radius: 0.5rem;
+}
+
+html {
+  /* Lenis manages scroll; keep native fallback smooth too */
+  scroll-behavior: auto;
 }
 
 body {
@@ -77,8 +79,23 @@ body {
   color: var(--color-foreground);
   font-family: var(--font-sans);
   overflow-x: hidden;
-  selection-background: var(--color-primary);
-  selection-color: var(--color-primary-foreground);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Lenis required styles */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -86,7 +103,7 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.02em;
 }
 
-/* Custom Scrollbar */
+/* Custom scrollbar — slim, tinted to palette */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -94,7 +111,7 @@ h1, h2, h3, h4, h5, h6 {
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.3);
+  background: hsl(var(--foreground) / 0.2);
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
@@ -102,8 +119,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 ::selection {
-  background-color: hsl(var(--primary) / 0.2);
-  color: hsl(var(--primary));
+  background-color: hsl(var(--primary) / 0.25);
+  color: hsl(var(--foreground));
 }
 
 .text-stroke-1 {
@@ -114,37 +131,41 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-text-stroke: 2px currentColor;
 }
 
-/* Dot Grid Pattern (Subtler) */
+.text-stroke-0 {
+  -webkit-text-stroke: 0;
+}
+
+/* Dot grid pattern */
 .bg-grid-pattern {
   background-size: 40px 40px;
-  background-image: 
-    radial-gradient(circle, hsl(var(--primary) / 0.1) 1px, transparent 1px);
+  background-image:
+    radial-gradient(circle, hsl(var(--foreground) / 0.12) 1px, transparent 1px);
 }
 
-/* Glass effect */
+/* Glass effect — sky tint */
 .glass {
-  background: hsla(35, 30%, 96%, 0.7);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid hsl(var(--border) / 0.5);
+  background: hsla(213, 38%, 91%, 0.72);
+  backdrop-filter: blur(12px) saturate(140%);
+  -webkit-backdrop-filter: blur(12px) saturate(140%);
+  border-bottom: 1px solid hsl(var(--foreground) / 0.06);
 }
 
-/* Blob Animations */
-@keyframes blob {
-  0% { transform: translate(0px, 0px) scale(1); }
-  33% { transform: translate(30px, -50px) scale(1.1); }
-  66% { transform: translate(-20px, 20px) scale(0.9); }
-  100% { transform: translate(0px, 0px) scale(1); }
+/* Section eyebrow utility (small mono label) */
+.section-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
 }
 
-.animate-blob {
-  animation: blob 7s infinite;
-}
-
-.animation-delay-2000 {
-  animation-delay: 2s;
-}
-
-.animation-delay-4000 {
-  animation-delay: 4s;
+/* Reduce motion: collapse animations */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
 }
