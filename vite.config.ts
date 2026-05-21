@@ -14,7 +14,7 @@ export default defineConfig({
       "@assets": path.resolve(import.meta.dirname, "attached_assets"),
     },
   },
-  base: "/",
+  base: "/Adivs-Portfolio-Site/",
   css: {
     postcss: {
       plugins: [],
